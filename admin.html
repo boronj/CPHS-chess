@@ -1,0 +1,147 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown Point Chess Club - Admin Panel</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <span class="crown-icon">👑</span>
+                <h1>Crown Point Chess Club</h1>
+                <span class="crown-icon">♟️</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn inactive">Leaderboard</a>
+                <a href="archives.html" class="nav-btn inactive">Archives</a>
+                <a href="tournaments.html" class="nav-btn inactive">Tournaments</a>
+                <button class="nav-btn active">Admin Panel</button>
+            </div>
+        </div>
+
+        <!-- Password Modal -->
+        <div id="password-modal" class="password-modal">
+            <div class="password-box">
+                <h2>🔒 Authentication Required</h2>
+                <input type="password" id="password-input" class="password-input" placeholder="Enter admin password">
+                <div class="password-buttons">
+                    <button id="password-submit-btn">Submit</button>
+                    <button class="cancel-btn" id="password-cancel-btn">Cancel</button>
+                </div>
+                <div id="password-message"></div>
+            </div>
+        </div>
+
+        <div class="admin-panel" id="admin-content" style="display: none;">
+            <div class="admin-section">
+                <h3>👤 Add New Player</h3>
+                <div class="form-group">
+                    <label>Player Name:</label>
+                    <input type="text" id="new-player-name" placeholder="Enter player name">
+                </div>
+                <div class="form-group">
+                    <label>Email (optional):</label>
+                    <input type="email" id="new-player-email" placeholder="Enter email address">
+                </div>
+                <div class="form-group">
+                    <label>Starting Points:</label>
+                    <input type="number" id="new-player-points" value="0" min="0" max="49">
+                </div>
+                <div class="form-group">
+                    <label>Assigned Tier: <span id="assigned-tier" style="color: #8B0000; font-weight: bold;">Bronze</span></label>
+                    <small style="color: #666;">Tier is automatically determined by points</small>
+                </div>
+                <button id="add-player-btn">Add Player</button>
+                <div id="add-message"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>🎮 Record Match Result</h3>
+                <div class="form-group">
+                    <label>Winner:</label>
+                    <select id="winner-select"></select>
+                </div>
+                <div class="form-group">
+                    <label>Loser:</label>
+                    <select id="loser-select"></select>
+                </div>
+                <button id="record-match-btn">Record Match</button>
+                <div id="match-message"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>💎 Archive Management</h3>
+                <div class="form-group">
+                    <label>Archive Month (e.g., "December 2024"):</label>
+                    <input type="text" id="archive-month" placeholder="Enter month and year">
+                </div>
+                <div class="form-group">
+                    <label>1st Place Winner:</label>
+                    <select id="archive-first"></select>
+                </div>
+                <div class="form-group">
+                    <label>2nd Place Winner:</label>
+                    <select id="archive-second"></select>
+                </div>
+                <div class="form-group">
+                    <label>3rd Place Winner:</label>
+                    <select id="archive-third"></select>
+                </div>
+                <button class="archive-btn" id="add-archive-btn">Add to Archives</button>
+                <div id="archive-message"></div>
+                
+                <div class="player-list" id="archive-list" style="margin-top: 20px;">
+                    <h4 style="margin-bottom: 10px;">Existing Archives:</h4>
+                    <div id="existing-archives"></div>
+                </div>
+            </div>
+
+            <div class="admin-section">
+                <h3>🏷️ Custom Badge Management</h3>
+                
+                <h4 style="color: #8B0000; margin-bottom: 10px;">Tournament Winner Badges 🏆</h4>
+                <div class="player-list" id="tournament-winners-list" style="margin-bottom: 20px;">
+                    <div id="tournament-winners-display"></div>
+                </div>
+                <button class="remove-btn" id="clear-tournament-winners-btn" style="width: 100%; margin-bottom: 20px;">Clear All Tournament Winners</button>
+                
+                <h4 style="color: #8B0000; margin-bottom: 10px;">Champion Badge Info 💎</h4>
+                <p style="color: #666; font-size: 0.9em; margin-bottom: 10px;">
+                    Champion badges are automatically assigned to players who appear in monthly archives. 
+                    To remove champion status, delete the relevant archive entry above.
+                </p>
+                <div id="badge-message"></div>
+            </div>
+
+            <div class="admin-section">
+                <h3>🗑️ Remove Player</h3>
+                <div class="player-list" id="remove-player-list"></div>
+            </div>
+
+            <button class="logout-btn" onclick="logout()">🚪 Logout from Admin Panel</button>
+        </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/admin.js"></script>
+    
+    <script>
+        // Immediately show password modal on admin page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Small delay to ensure all scripts are loaded
+            setTimeout(() => {
+                if (!isAuthenticated) {
+                    showPasswordModal();
+                } else {
+                    onAuthSuccess();
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html

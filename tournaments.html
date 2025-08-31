@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown Point Chess Club - Tournaments</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <span class="crown-icon">👑</span>
+                <h1>Crown Point Chess Club</h1>
+                <span class="crown-icon">♟️</span>
+            </div>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-btn inactive">Leaderboard</a>
+                <a href="archives.html" class="nav-btn inactive">Archives</a>
+                <button class="nav-btn active">Tournaments</button>
+                <a href="admin.html" class="nav-btn inactive">Admin Panel</a>
+            </div>
+        </div>
+
+        <!-- Password Modal -->
+        <div id="password-modal" class="password-modal">
+            <div class="password-box">
+                <h2>🔒 Authentication Required</h2>
+                <input type="password" id="password-input" class="password-input" placeholder="Enter admin password" onkeypress="if(event.key==='Enter')checkPassword()">
+                <div class="password-buttons">
+                    <button onclick="checkPassword()">Submit</button>
+                    <button class="cancel-btn" onclick="closePasswordModal()">Cancel</button>
+                </div>
+                <div id="password-message"></div>
+            </div>
+        </div>
+
+        <div class="bracket-container">
+            <div class="leaderboard-header">🏀 March Madness Tournament 🏀</div>
+            
+            <div class="bracket-controls">
+                <select id="bracket-filter">
+                    <option value="all">All Players</option>
+                    <option value="bronze">Bronze Tier Only</option>
+                    <option value="silver">Silver Tier Only</option>
+                    <option value="gold">Gold Tier Only</option>
+                    <option value="platinum">Platinum Tier Only</option>
+                    <option value="diamond">Diamond Tier Only</option>
+                </select>
+                <button class="generate-btn" onclick="generateBracket()">🎲 Generate Random Bracket</button>
+                <button class="reset-btn" onclick="resetBracket()">🔄 Reset Tournament</button>
+            </div>
+
+            <div id="tournament-complete-section"></div>
+            <div id="bracket-display">
+                <div class="bracket-empty">Select players and click "Generate Random Bracket" to start a tournament!</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/tournament.js"></script>
+</body>
+</html

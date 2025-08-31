@@ -1,0 +1,72 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crown Point Chess Club - Leaderboard</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <span class="crown-icon">👑</span>
+                <h1>Crown Point Chess Club</h1>
+                <span class="crown-icon">♟️</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-btn active">Leaderboard</button>
+                <a href="archives.html" class="nav-btn inactive">Archives</a>
+                <a href="tournaments.html" class="nav-btn inactive">Tournaments</a>
+                <a href="admin.html" class="nav-btn inactive">Admin Panel</a>
+            </div>
+        </div>
+
+        <!-- Player Stats Modal -->
+        <div id="stats-modal" class="stats-modal">
+            <div class="stats-box">
+                <div class="stats-header">
+                    <h2 id="stats-player-name">Player Name</h2>
+                    <div class="stats-tier" id="stats-tier">Tier</div>
+                    <div class="stats-points" id="stats-points">0 Points</div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-wins">0</div>
+                        <div class="stat-label">Wins</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-losses">0</div>
+                        <div class="stat-label">Losses</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-winrate">0%</div>
+                        <div class="stat-label">Win Rate</div>
+                    </div>
+                </div>
+                <div class="match-history">
+                    <h3>Recent Match History</h3>
+                    <div id="match-history-list"></div>
+                </div>
+                <button class="close-stats-btn" onclick="closeStatsModal()">Close</button>
+            </div>
+        </div>
+
+        <!-- Top 3 Monthly Leaderboard -->
+        <div class="top3-section">
+            <div class="top3-header">🏆 Monthly Top 3 Champions 🏆</div>
+            <div class="podium" id="podium-display"></div>
+            <div class="month-info">January 2025 Rankings</div>
+        </div>
+
+        <div class="leaderboard">
+            <div class="leaderboard-header">🏆 Player Rankings 🏆</div>
+            <div id="all-players-list"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/leaderboard.js"></script>
+</body>
+</html
