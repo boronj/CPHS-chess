@@ -334,6 +334,10 @@ body {
     color: #e2e8f0;
 }
 
+.dark-name {
+    color:#333;
+}
+
 .podium-points {
     color: #ef4444;
     font-weight: 600;
@@ -975,6 +979,7 @@ button:hover {
 }
 
 .player-item {
+    color: #333;
     display: flex;
     justify-content: space-between;
     align-items: center;

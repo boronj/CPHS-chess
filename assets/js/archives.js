@@ -36,7 +36,7 @@ async function updateArchivesDisplay() {
                     archiveHTML += `
                         <div class="podium-place place-${place}">
                             <div class="podium-player">
-                                <div class="podium-name">${name}</div>
+                                <div class="podium-name dark-name">${name}</div>
                                 <div class="podium-badges" style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
                                     ${getChampionBadge(name)}
                                     ${getTournamentWinnerBadge(name)}
