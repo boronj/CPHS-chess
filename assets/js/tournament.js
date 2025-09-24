@@ -3,6 +3,7 @@ function generateBracket() {
     if (!checkAdminAccess()) return;
     
     const filter = document.getElementById('bracket-filter').value;
+    let players = await fetchAdminPlayers();
     let participants = [];
     
     if (filter === 'all') {
