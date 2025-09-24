@@ -1,9 +1,10 @@
 // Tournament Bracket Functions
-function generateBracket() {
+async function generateBracket() {
     if (!checkAdminAccess()) return;
     
     const filter = document.getElementById('bracket-filter').value;
     let players = await fetchAdminPlayers();
+    players = groupPlayersByTier(players);
     let participants = [];
     
     if (filter === 'all') {
