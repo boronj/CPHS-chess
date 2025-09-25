@@ -299,7 +299,7 @@ function showMatchDialog(matchId) {
     }
 }
 
-function advanceWinner(matchId, winner) {
+async function advanceWinner(matchId, winner) {
     const [roundKey, matchIndex] = matchId.split('-');
     const round = parseInt(roundKey.replace('round', ''));
     const match = currentTournament.bracket[roundKey][parseInt(matchIndex)];
@@ -322,8 +322,8 @@ function advanceWinner(matchId, winner) {
     } else {
         // Tournament complete!
         currentTournament.winner = winner;
-        if (!tournamentWinners.includes(winner.name)) {
-            tournamentWinners.push(winner.name);
+        if (!isTournamentWinner(winner.name)) { //This should probably be fixed to go by ID
+            await updateTournamentWinnerAPI(winner.id, true);
         }
     }
     
